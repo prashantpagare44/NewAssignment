@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 
 export const Register = async (req, res) => {   
      
-    const { name , email , password} = req.body;
+    const { name , email , password} = req.body
   try{
          if( !name || !email || !password)  
         return res.status(400).json({message:'all field are required'});
@@ -47,6 +47,8 @@ export const Login = async (req, res) => {
             message:"user not found"
         })
     }
+    console.log(email)
+    console.log(user.password)
     const isMatch = await bcrypt.compare(password , user.Password);
    
     const accessToken = generateToken(user._id);
